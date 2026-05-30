@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uygulamaya Yönlendiriliyorsunuz...</title>
+</head>
+<body>
+
+    <p style="text-align: center; font-family: sans-serif; margin-top: 50px; font-size: 18px;">
+        Odaya bağlanılıyor, lütfen bekleyin...
+    </p>
+
+    <script>
+        // 1. URL'deki değişen oda numarasını yakalar
+        const urlParams = new URLSearchParams(window.location.search);
+        const roomId = urlParams.get('roomId');
+
+        if (roomId) {
+            // 2. Kullanıcıyı hiç bekletmeden uygulamaya fırlatır
+            window.location.href = `zknskr://oyun?roomId=${roomId}`;
+            
+            // Yedek Plan: Uygulama yüklü değilse 3 saniye sonra Play Store'a atar
+            setTimeout(function() {
+                window.location.href = "https://play.google.com/store/apps/details?id=com.paket.adiniz";
+            }, 3000);
+        } else {
+            document.body.innerHTML = "<h2 style='text-align:center; font-family:sans-serif; margin-top:50px;'>Hata: Oda numarası bulunamadı!</h2>";
+        }
+    </script>
+</body>
+</html>
